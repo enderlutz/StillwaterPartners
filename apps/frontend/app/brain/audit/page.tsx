@@ -7,7 +7,7 @@ import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/db";
 
-export const metadata = { title: "Audit — Brain — Client OS" };
+export const metadata = { title: "Audit — Brain — Stillwater Partners" };
 export const dynamic = "force-dynamic";
 
 type AuditRow = {

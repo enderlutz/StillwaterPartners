@@ -1,6 +1,6 @@
 import { LoginForm } from "@/components/auth/login-form";
 
-export const metadata = { title: "Sign in — Client OS" };
+export const metadata = { title: "Sign in — Stillwater Partners" };
 export const dynamic = "force-dynamic";
 
 export default function LoginPage() {
@@ -11,11 +11,11 @@ export default function LoginPage() {
           <div className="mb-7 flex items-center gap-2.5">
             <div className="flex h-7 w-7 items-center justify-center border border-brass/50">
               <span className="text-[11px] font-medium tracking-[0.1em] text-brass">
-                CO
+                SP
               </span>
             </div>
             <div className="font-serif text-[18px] leading-none tracking-tight text-paper">
-              Client OS
+              Stillwater Partners
             </div>
           </div>
           <h1 className="font-serif text-[32px] font-medium leading-[1.1] tracking-tight text-paper">

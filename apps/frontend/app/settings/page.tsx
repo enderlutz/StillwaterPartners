@@ -6,7 +6,7 @@ import { SettingsControls } from "@/components/settings-controls";
 import { getCurrentProfile } from "@/lib/db";
 import { getUseMockServer } from "@/lib/settings";
 
-export const metadata = { title: "Settings — Client OS" };
+export const metadata = { title: "Settings — Stillwater Partners" };
 
 export default async function SettingsPage() {
   const profile = await getCurrentProfile();

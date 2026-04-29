@@ -18,7 +18,7 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Client OS — The Cabinet",
+  title: "Stillwater Partners",
   description:
     "A private workshop for the work of building enduring businesses.",
 };

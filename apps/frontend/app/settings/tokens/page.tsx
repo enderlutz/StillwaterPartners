@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { listPats } from "./actions";
 import { TokensClient } from "./tokens-client";
 
-export const metadata = { title: "Tokens — Settings — Client OS" };
+export const metadata = { title: "Tokens — Settings — Stillwater Partners" };
 export const dynamic = "force-dynamic";
 
 export default async function TokensPage() {
@@ -36,7 +36,7 @@ export default async function TokensPage() {
                 &quot;Authorization: Bearer &lt;token&gt;&quot;
               </code>
             </li>
-            <li>Every <code className="text-brass">claude</code> session on that device now has read + write access to Client OS.</li>
+            <li>Every <code className="text-brass">claude</code> session on that device now has read + write access to Stillwater Partners.</li>
           </ol>
         </Card>
       </div>

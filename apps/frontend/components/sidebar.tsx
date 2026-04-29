@@ -77,11 +77,11 @@ export function Sidebar({
         <Link href="/" className="flex items-center gap-2.5">
           <div className="flex h-7 w-7 items-center justify-center border border-brass/50 bg-transparent">
             <span className="text-[11px] font-medium tracking-[0.1em] text-brass">
-              CO
+              SP
             </span>
           </div>
           <div className="font-serif text-[18px] leading-none tracking-tight text-paper">
-            Client OS
+            Stillwater Partners
           </div>
         </Link>
       </div>

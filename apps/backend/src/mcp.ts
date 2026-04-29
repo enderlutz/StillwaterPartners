@@ -12,7 +12,7 @@ export function buildMcpServer(ctx: AuthContext): McpServer {
     {
       capabilities: { tools: {}, logging: {} },
       instructions:
-        "Tools to read and write the Client OS consulting platform. Reads pull synthesis/KPIs/meetings/tasks/etc.; writes log new artifacts. Use search() and bridge_brief() for cross-client memory.",
+        "Tools to read and write the Stillwater Partners consulting platform. Reads pull synthesis/KPIs/meetings/tasks/etc.; writes log new artifacts. Use search() and bridge_brief() for cross-client memory.",
     },
   );
 
