@@ -12,6 +12,7 @@ import {
   FileText,
   Inbox,
   KeyRound,
+  Layers,
   LayoutDashboard,
   LogOut,
   Map,
@@ -28,6 +29,7 @@ const CLIENT_ICONS: Record<string, typeof LayoutDashboard> = {
   file: FileText,
   plan: Map,
   work: CheckSquare,
+  operations: Layers,
   room: Users,
   timeline: Clock,
 };

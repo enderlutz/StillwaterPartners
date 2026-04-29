@@ -399,6 +399,66 @@ export type Profile = {
   must_change_password: boolean;
 };
 
+export type OperationsBlock = {
+  id: string;
+  client_id: string;
+  section_key: string;
+  position: number;
+  content_md: string;
+  updated_at: string;
+  updated_by: string | null;
+};
+
+export const OPERATIONS_SECTIONS = [
+  {
+    key: "snapshot",
+    label: "Snapshot",
+    hint: "One paragraph the partner reading this needs to know first.",
+  },
+  {
+    key: "revenue",
+    label: "How they make money",
+    hint: "Revenue model, mix, seasonality, concentration.",
+  },
+  {
+    key: "cost",
+    label: "How they spend money",
+    hint: "Cost structure, margin shape.",
+  },
+  {
+    key: "flow",
+    label: "How the work gets done",
+    hint: "Intake → fulfillment → support flow.",
+  },
+  {
+    key: "people",
+    label: "People & decisions",
+    hint: "Org, who owns what, who approves what.",
+  },
+  {
+    key: "stack",
+    label: "Stack",
+    hint: "Tools, systems, where data lives.",
+  },
+  {
+    key: "constraints",
+    label: "Constraints",
+    hint: "What's holding the business back today.",
+  },
+  {
+    key: "leverage",
+    label: "Leverage",
+    hint: "What's working, what scales, where to push.",
+  },
+  {
+    key: "notes",
+    label: "Free notes",
+    hint: "Bottom catch-all.",
+  },
+] as const;
+
+export type OperationsSectionKey = (typeof OPERATIONS_SECTIONS)[number]["key"];
+
 export type ClientInvite = {
   id: string;
   client_id: string;
@@ -424,11 +484,12 @@ export const SURFACES = [
   { zone: "brain", slug: "invites", label: "Invites", clientFacing: false },
   { zone: "brain", slug: "audit", label: "Audit", clientFacing: false },
 
-  // Client surfaces (5 + timeline)
+  // Client surfaces
   { zone: "client", slug: "numbers", label: "Numbers", clientFacing: true },
   { zone: "client", slug: "file", label: "File", clientFacing: true },
   { zone: "client", slug: "plan", label: "Plan", clientFacing: true },
   { zone: "client", slug: "work", label: "Work", clientFacing: true },
+  { zone: "client", slug: "operations", label: "Operations", clientFacing: true },
   { zone: "client", slug: "room", label: "Room", clientFacing: true },
   { zone: "client", slug: "timeline", label: "Timeline", clientFacing: true },
 ] as const;
