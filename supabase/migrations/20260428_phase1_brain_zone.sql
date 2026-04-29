@@ -126,14 +126,16 @@ alter table mcp_audit_log enable row level security;
 
 -- Team members see all of the above. Clients only see builds for their own
 -- client. Pipeline / practice / PATs / audit are admin-only.
-create policy if not exists "team sees all builds" on builds
+drop policy if exists "team sees all builds" on builds;
+create policy "team sees all builds" on builds
   for select using (
     exists (
       select 1 from profiles where profiles.id = auth.uid() and profiles.role = 'team_member'
     )
   );
 
-create policy if not exists "client sees own builds" on builds
+drop policy if exists "client sees own builds" on builds;
+create policy "client sees own builds" on builds
   for select using (
     exists (
       select 1 from profiles
@@ -143,29 +145,34 @@ create policy if not exists "client sees own builds" on builds
     )
   );
 
-create policy if not exists "team only — prospects" on prospects
+drop policy if exists "team only — prospects" on prospects;
+create policy "team only — prospects" on prospects
   for all using (
     exists (
       select 1 from profiles where profiles.id = auth.uid() and profiles.role = 'team_member'
     )
   );
 
-create policy if not exists "team only — playbooks" on playbooks
+drop policy if exists "team only — playbooks" on playbooks;
+create policy "team only — playbooks" on playbooks
   for all using (
     exists (
       select 1 from profiles where profiles.id = auth.uid() and profiles.role = 'team_member'
     )
   );
 
-create policy if not exists "team only — lessons" on lessons
+drop policy if exists "team only — lessons" on lessons;
+create policy "team only — lessons" on lessons
   for all using (
     exists (
       select 1 from profiles where profiles.id = auth.uid() and profiles.role = 'team_member'
     )
   );
 
-create policy if not exists "owner only — PATs" on personal_access_tokens
+drop policy if exists "owner only — PATs" on personal_access_tokens;
+create policy "owner only — PATs" on personal_access_tokens
   for all using (auth.uid() = user_id);
 
-create policy if not exists "owner only — audit log" on mcp_audit_log
+drop policy if exists "owner only — audit log" on mcp_audit_log;
+create policy "owner only — audit log" on mcp_audit_log
   for select using (auth.uid() = user_id);
