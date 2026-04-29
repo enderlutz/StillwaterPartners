@@ -21,7 +21,7 @@ import type {
   Stakeholder,
   Synthesis,
   Task,
-} from "./types";
+} from "./types.js";
 
 export const clients: Client[] = [
   {

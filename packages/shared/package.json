@@ -3,18 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./types": "./src/types.ts",
-    "./mock": "./src/mock-data.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./mock": {
+      "types": "./dist/mock-data.d.ts",
+      "default": "./dist/mock-data.js"
+    }
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "echo \"(no lint configured)\"",
-    "build": "echo \"(source-only package, no build)\"",
-    "clean": "rm -rf .turbo"
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist .turbo"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
