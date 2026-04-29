@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 40 11% 5%;
+  --slate: 33 12% 13%;
+  --slate-2: 33 11% 17%;
+  --hairline: 35 10% 22%;
+  --paper: 38 30% 90%;
+  --paper-soft: 38 18% 70%;
+  --paper-dim: 38 12% 50%;
+  --brass: 38 49% 60%;
+  --brass-bright: 38 65% 72%;
+  --brass-dim: 38 35% 45%;
+}
+
+html,
+body {
+  background: hsl(var(--ink));
+  color: hsl(var(--paper));
+  font-feature-settings: "tnum", "lnum", "ss01", "cv11", "calt";
+}
+
+/* Faint specks of light on the dark surfaces — like dust in a still room. */
+body {
+  background-image:
+    radial-gradient(hsl(var(--paper) / 0.012) 1px, transparent 1px),
+    radial-gradient(hsl(var(--paper) / 0.008) 1px, transparent 1px);
+  background-size: 32px 32px, 44px 44px;
+  background-position: 0 0, 16px 22px;
+}
+
+*,
+*::before,
+*::after {
+  border-color: hsl(var(--hairline));
+}
+
+::selection {
+  background: hsl(var(--brass));
+  color: hsl(var(--ink));
+}
+
+/* Editorial micro-typography */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--paper-soft));
+  font-feature-settings: "tnum";
+}
+
+.eyebrow-brass {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--brass));
+}
+
+.masthead {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: hsl(var(--paper-dim));
+}
+
+.brass-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    hsl(var(--brass) / 0.7),
+    hsl(var(--brass) / 0)
+  );
+}
+
+/* The Brass Total — used as the bottom rule on tables to suggest a balance line. */
+.total-rule {
+  height: 1.5px;
+  background: hsl(var(--brass));
+}
+
+.dropcap::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.86;
+  margin: 0.06em 0.08em 0 0;
+  color: hsl(var(--brass));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hairline));
+  border-radius: 999px;
+  border: 2px solid hsl(var(--ink));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--brass-dim));
+}
+
+/* Form inputs need their dark-cabinet defaults — no white forced inputs. */
+input,
+textarea,
+select {
+  color-scheme: dark;
+}
+input::placeholder,
+textarea::placeholder {
+  color: hsl(var(--paper-dim));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
