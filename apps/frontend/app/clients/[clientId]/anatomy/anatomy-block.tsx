@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { Markdown } from "@/components/markdown";
 import {
-  deleteOperationsBlock,
-  moveOperationsBlock,
-  saveOperationsBlock,
+  deleteAnatomyBlock,
+  moveAnatomyBlock,
+  saveAnatomyBlock,
 } from "./actions";
 import type { OperationsBlock } from "@/lib/types";
 
@@ -14,7 +14,7 @@ const PLACEHOLDER = `Write markdown here.
 
 Headings, **bold**, lists, links, GFM tables, and \`\`\`mermaid\`\`\` diagrams all render.`;
 
-export function OperationsBlockCard({
+export function AnatomyBlockCard({
   block,
   clientId,
   isFirst,
@@ -33,7 +33,7 @@ export function OperationsBlockCard({
       <div className="border border-brass/40 bg-ink p-4">
         <form
           action={async (fd) => {
-            await saveOperationsBlock(fd);
+            await saveAnatomyBlock(fd);
             setEditing(false);
           }}
         >
@@ -78,7 +78,7 @@ export function OperationsBlockCard({
           {new Date(block.updated_at).toLocaleDateString()}
         </span>
         <div className="flex items-center gap-3">
-          <form action={moveOperationsBlock}>
+          <form action={moveAnatomyBlock}>
             <input type="hidden" name="id" value={block.id} />
             <input type="hidden" name="client_id" value={clientId} />
             <input type="hidden" name="direction" value="up" />
@@ -90,7 +90,7 @@ export function OperationsBlockCard({
               ↑
             </button>
           </form>
-          <form action={moveOperationsBlock}>
+          <form action={moveAnatomyBlock}>
             <input type="hidden" name="id" value={block.id} />
             <input type="hidden" name="client_id" value={clientId} />
             <input type="hidden" name="direction" value="down" />
@@ -109,7 +109,7 @@ export function OperationsBlockCard({
           >
             Edit
           </button>
-          <form action={deleteOperationsBlock}>
+          <form action={deleteAnatomyBlock}>
             <input type="hidden" name="id" value={block.id} />
             <input type="hidden" name="client_id" value={clientId} />
             <button

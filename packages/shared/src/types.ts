@@ -489,7 +489,7 @@ export const SURFACES = [
   { zone: "client", slug: "file", label: "File", clientFacing: true },
   { zone: "client", slug: "plan", label: "Plan", clientFacing: true },
   { zone: "client", slug: "work", label: "Work", clientFacing: true },
-  { zone: "client", slug: "operations", label: "Operations", clientFacing: true },
+  { zone: "client", slug: "anatomy", label: "Anatomy", clientFacing: true },
   { zone: "client", slug: "room", label: "Room", clientFacing: true },
   { zone: "client", slug: "timeline", label: "Timeline", clientFacing: true },
 ] as const;

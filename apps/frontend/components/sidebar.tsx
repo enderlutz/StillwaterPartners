@@ -29,7 +29,7 @@ const CLIENT_ICONS: Record<string, typeof LayoutDashboard> = {
   file: FileText,
   plan: Map,
   work: CheckSquare,
-  operations: Layers,
+  anatomy: Layers,
   room: Users,
   timeline: Clock,
 };

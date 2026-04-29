@@ -14,7 +14,7 @@ async function authedClient() {
   return { supabase, userId: user.id };
 }
 
-export async function listOperationsBlocks(
+export async function listAnatomyBlocks(
   clientId: string,
 ): Promise<OperationsBlock[]> {
   const { supabase } = await authedClient();
@@ -28,7 +28,7 @@ export async function listOperationsBlocks(
   return (data ?? []) as OperationsBlock[];
 }
 
-export async function addOperationsBlock(formData: FormData): Promise<void> {
+export async function addAnatomyBlock(formData: FormData): Promise<void> {
   const { supabase, userId } = await authedClient();
   const clientId = String(formData.get("client_id") ?? "");
   const sectionKey = String(formData.get("section_key") ?? "");
@@ -50,10 +50,10 @@ export async function addOperationsBlock(formData: FormData): Promise<void> {
     content_md: "",
     updated_by: userId,
   });
-  revalidatePath(`/clients/${clientId}/operations`);
+  revalidatePath(`/clients/${clientId}/anatomy`);
 }
 
-export async function saveOperationsBlock(formData: FormData): Promise<void> {
+export async function saveAnatomyBlock(formData: FormData): Promise<void> {
   const { supabase, userId } = await authedClient();
   const id = String(formData.get("id") ?? "");
   const clientId = String(formData.get("client_id") ?? "");
@@ -67,19 +67,19 @@ export async function saveOperationsBlock(formData: FormData): Promise<void> {
       updated_by: userId,
     })
     .eq("id", id);
-  revalidatePath(`/clients/${clientId}/operations`);
+  revalidatePath(`/clients/${clientId}/anatomy`);
 }
 
-export async function deleteOperationsBlock(formData: FormData): Promise<void> {
+export async function deleteAnatomyBlock(formData: FormData): Promise<void> {
   const { supabase } = await authedClient();
   const id = String(formData.get("id") ?? "");
   const clientId = String(formData.get("client_id") ?? "");
   if (!id) return;
   await supabase.from("company_operations_blocks").delete().eq("id", id);
-  revalidatePath(`/clients/${clientId}/operations`);
+  revalidatePath(`/clients/${clientId}/anatomy`);
 }
 
-export async function moveOperationsBlock(formData: FormData): Promise<void> {
+export async function moveAnatomyBlock(formData: FormData): Promise<void> {
   const { supabase } = await authedClient();
   const id = String(formData.get("id") ?? "");
   const clientId = String(formData.get("client_id") ?? "");
@@ -116,5 +116,5 @@ export async function moveOperationsBlock(formData: FormData): Promise<void> {
     .update({ position: current.position })
     .eq("id", swap.id);
 
-  revalidatePath(`/clients/${clientId}/operations`);
+  revalidatePath(`/clients/${clientId}/anatomy`);
 }

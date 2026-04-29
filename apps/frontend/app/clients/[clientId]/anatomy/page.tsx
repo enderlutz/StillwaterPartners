@@ -4,8 +4,8 @@ import { PageHeader } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { getClient } from "@/lib/db";
 import { OPERATIONS_SECTIONS } from "@/lib/types";
-import { addOperationsBlock, listOperationsBlocks } from "./actions";
-import { OperationsBlockCard } from "./operations-block";
+import { addAnatomyBlock, listAnatomyBlocks } from "./actions";
+import { AnatomyBlockCard } from "./anatomy-block";
 
 export const dynamic = "force-dynamic";
 
@@ -16,11 +16,11 @@ export async function generateMetadata({
 }) {
   const client = await getClient(params.clientId);
   return {
-    title: `Operations — ${client?.name ?? "Client"} — Stillwater Partners`,
+    title: `Anatomy — ${client?.name ?? "Client"} — Stillwater Partners`,
   };
 }
 
-export default async function OperationsPage({
+export default async function AnatomyPage({
   params,
 }: {
   params: { clientId: string };
@@ -28,7 +28,7 @@ export default async function OperationsPage({
   const client = await getClient(params.clientId);
   if (!client) notFound();
 
-  const blocks = await listOperationsBlocks(params.clientId);
+  const blocks = await listAnatomyBlocks(params.clientId);
   const bySection = new Map<string, typeof blocks>();
   for (const s of OPERATIONS_SECTIONS) bySection.set(s.key, []);
   for (const b of blocks) {
@@ -40,8 +40,8 @@ export default async function OperationsPage({
     <Shell>
       <PageHeader
         eyebrow={client.name}
-        title="Company Operations"
-        description="The whiteboard. Capture how this company works — revenue, costs, flow, people, stack, constraints, leverage. Add blocks per section. Markdown, tables, and Mermaid diagrams all render."
+        title="Anatomy"
+        description="The whiteboard for understanding how this company is built — revenue, costs, flow, people, stack, constraints, leverage. Add blocks per section. Markdown, tables, and Mermaid diagrams all render."
       />
 
       <nav className="mb-8 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.18em]">
@@ -77,7 +77,7 @@ export default async function OperationsPage({
                   </Card>
                 )}
                 {sectionBlocks.map((b, i) => (
-                  <OperationsBlockCard
+                  <AnatomyBlockCard
                     key={b.id}
                     block={b}
                     clientId={params.clientId}
@@ -86,7 +86,7 @@ export default async function OperationsPage({
                   />
                 ))}
 
-                <form action={addOperationsBlock}>
+                <form action={addAnatomyBlock}>
                   <input
                     type="hidden"
                     name="client_id"
