@@ -399,6 +399,20 @@ export type Profile = {
   must_change_password: boolean;
 };
 
+export type ClientInvite = {
+  id: string;
+  client_id: string;
+  label: string;
+  token_prefix: string;
+  created_by: string | null;
+  created_at: string;
+  expires_at: string | null;
+  revoked_at: string | null;
+  max_uses: number | null;
+  use_count: number;
+  last_used_at: string | null;
+};
+
 // ───── IA module registry — new 2-zone model ─────
 // `zone: "brain"` lives in the admin zone; `zone: "client"` is per-client.
 // `clientFacing` controls whether clients see the surface when they log in.
@@ -407,6 +421,7 @@ export const SURFACES = [
   { zone: "brain", slug: "", label: "Brain", clientFacing: false },
   { zone: "brain", slug: "pipeline", label: "Pipeline", clientFacing: false },
   { zone: "brain", slug: "practice", label: "Practice", clientFacing: false },
+  { zone: "brain", slug: "invites", label: "Invites", clientFacing: false },
   { zone: "brain", slug: "audit", label: "Audit", clientFacing: false },
 
   // Client surfaces (5 + timeline)

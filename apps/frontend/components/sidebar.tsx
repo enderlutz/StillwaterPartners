@@ -15,6 +15,7 @@ import {
   LayoutDashboard,
   LogOut,
   Map,
+  MailPlus,
   Settings,
   ShieldCheck,
   Target,
@@ -35,6 +36,7 @@ const BRAIN_ICONS: Record<string, typeof LayoutDashboard> = {
   "": Brain,
   pipeline: Inbox,
   practice: BookOpen,
+  invites: MailPlus,
   audit: ShieldCheck,
 };
 

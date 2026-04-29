@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { SignupFlow } from "./signup-flow";
 
-export const metadata = { title: "Invitation only — Stillwater Partners" };
+export const metadata = { title: "Create account — Stillwater Partners" };
+export const dynamic = "force-dynamic";
 
 export default function SignupPage() {
   return (
@@ -17,22 +18,19 @@ export default function SignupPage() {
               Stillwater Partners
             </div>
           </div>
-          <h1 className="font-serif text-[32px] font-medium leading-[1.1] tracking-tight text-paper">
-            Invitation only
-          </h1>
-          <p className="mt-3 text-[14px] leading-relaxed text-paper-soft">
-            New accounts are created by your account manager. If you&apos;re a
-            client, please use the personalized invite link sent to you. If you
-            already have an account, sign in below.
-          </p>
         </div>
 
-        <Link
-          href="/login"
-          className="block w-full border border-brass/40 bg-brass py-3.5 text-center text-[11px] font-medium uppercase tracking-[0.24em] text-ink transition-colors hover:bg-brass-bright"
-        >
-          Sign in
-        </Link>
+        <SignupFlow />
+
+        <p className="mt-8 text-[13px] text-paper-soft">
+          Already have an account?{" "}
+          <a
+            href="/login"
+            className="text-brass underline-offset-4 transition-colors hover:underline"
+          >
+            Sign in
+          </a>
+        </p>
       </div>
     </div>
   );
