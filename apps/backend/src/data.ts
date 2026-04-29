@@ -83,7 +83,7 @@ async function insertRow<T>(table: string, row: Partial<T>): Promise<T> {
   if (!supabase) throw new Error("Supabase not configured");
   const { data, error } = await supabase
     .from(table)
-    .insert(row)
+    .insert(row as never)
     .select("*")
     .single();
   if (error) throw new Error(error.message);
@@ -99,7 +99,7 @@ async function upsertRow<T>(
   if (!supabase) throw new Error("Supabase not configured");
   const { data, error } = await supabase
     .from(table)
-    .upsert(row, { onConflict })
+    .upsert(row as never, { onConflict })
     .select("*")
     .single();
   if (error) throw new Error(error.message);
@@ -115,7 +115,7 @@ async function updateRow<T>(
   if (!supabase) throw new Error("Supabase not configured");
   const { data, error } = await supabase
     .from(table)
-    .update(patch)
+    .update(patch as never)
     .eq("id", id)
     .select("*")
     .single();

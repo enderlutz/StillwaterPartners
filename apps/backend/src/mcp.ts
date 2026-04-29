@@ -449,9 +449,9 @@ export function buildMcpServer(ctx: AuthContext): McpServer {
     },
     wrap("upsert_synthesis", async (args) =>
       data.upsertSynthesis({
-        ...(args as never),
+        ...args,
         updated_at: new Date().toISOString(),
-      } as never),
+      }),
     ),
   );
 
@@ -881,7 +881,7 @@ export function buildMcpServer(ctx: AuthContext): McpServer {
       },
     },
     wrap("add_risk", async (args) =>
-      data.addRisk({ ...(args as never), visibility: "internal" } as never),
+      data.addRisk({ ...args, visibility: "internal" }),
     ),
   );
 
@@ -966,9 +966,9 @@ export function buildMcpServer(ctx: AuthContext): McpServer {
     },
     wrap("upsert_commercial", async (args) =>
       data.upsertCommercial({
-        ...(args as never),
+        ...args,
         visibility: "internal",
-      } as never),
+      }),
     ),
   );
 
